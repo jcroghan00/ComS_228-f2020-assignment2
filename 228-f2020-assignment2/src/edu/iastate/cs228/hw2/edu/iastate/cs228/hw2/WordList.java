@@ -1,13 +1,15 @@
 package edu.iastate.cs228.hw2;
 
 
+import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.Scanner;
 
 
 /**
  * A simple list of Strings.
  * 
- * @author
+ * @author Jack Croghan
  */
 public
 class
@@ -35,7 +37,10 @@ WordList
   WordList(String[] contents)
     throws NullPointerException
   {
-    // TODO
+    words = new String[contents.length];
+    for(int i = 0; i < contents.length; ++i){
+      words[i] = contents[i];
+    }
   }
 
   /**
@@ -55,7 +60,28 @@ WordList
     throws NullPointerException,
            FileNotFoundException
   {
-    // TODO
+    File file = new File(filename);
+    Scanner scnr1 = new Scanner(file);
+
+    int i = 0;
+    while(scnr1.hasNextLine()){
+      ++i;
+      scnr1.nextLine();
+    }
+
+    scnr1.close();
+
+    words = new String[i];
+
+    Scanner scnr2 = new Scanner(file);
+
+    i = 0;
+    while(scnr2.hasNextLine()){
+      words[i] = scnr2.nextLine();
+      ++i;
+    }
+
+    scnr2.close();
   }
 
 
@@ -69,9 +95,7 @@ WordList
   int
   length()
   {
-    // TODO
-
-    return 0;
+    return words.length;
   }
 
   /**
@@ -90,9 +114,7 @@ WordList
   get(int idx)
     throws IndexOutOfBoundsException
   {
-    // TODO
-
-    return null;
+    return words[idx];
   }
 
   /**
@@ -111,7 +133,7 @@ WordList
   set(int idx, String newValue)
     throws IndexOutOfBoundsException
   {
-    // TODO
+    words[idx] = newValue;
   }
 
   /**
@@ -130,7 +152,9 @@ WordList
   swap(int idxA, int idxB)
     throws IndexOutOfBoundsException
   {
-    // TODO
+    String tempWordA = words[idxA];
+    words[idxA] = words[idxB];
+    words[idxB] = tempWordA;
   }
 
   /**
@@ -143,9 +167,7 @@ WordList
   String[]
   getArray()
   {
-    // TODO
-
-    return null;
+    return words;
   }
 
   /**
@@ -156,12 +178,13 @@ WordList
   WordList
   clone()
   {
-    /*
-     * note: since Strings are immutable, you don't need to clone them
-     */
+    String[] newWords = new String[words.length];
 
-    // TODO
+    for(int i = 0; i < words.length; ++i){
+      newWords[i] = words[i];
+    }
 
-    return null;
+    WordList newList = new WordList(newWords);
+    return newList;
   }
 }

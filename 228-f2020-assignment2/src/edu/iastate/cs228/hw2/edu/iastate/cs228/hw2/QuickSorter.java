@@ -8,7 +8,7 @@ import java.util.Comparator;
  * An implementation of {@link Sorter} that performs quick sort
  * to sort the list.
  * 
- * @author
+ * @author Jack Croghan
  */
 public class QuickSorter extends Sorter
 {

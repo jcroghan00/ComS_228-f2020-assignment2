@@ -7,7 +7,7 @@ import java.util.Comparator;
 /**
  * An class that compares various methods of sorting.
  * 
- * @author Mike Petersen
+ * @author Jack Croghan
  */
 public
 class

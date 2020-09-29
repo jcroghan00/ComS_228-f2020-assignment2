@@ -8,7 +8,7 @@ import java.util.Comparator;
  * A string comparator that uses an ordering of an {@link Alphabet} to
  * determine how to compare individual characters.
  * 
- * @author
+ * @author Jack Croghan
  */
 public class AlphabetComparator  implements Comparator<String>{
   /**
@@ -55,9 +55,21 @@ public class AlphabetComparator  implements Comparator<String>{
    *   this comparator's ordering
    */
   @Override
-  public int compare(String a, String b) throws NullPointerException, IllegalArgumentException{
-    // TODO
+  public int compare(String a, String b) throws NullPointerException, IllegalArgumentException
+  {
+    char[] charA = a.toCharArray();
+    char[] charB = b.toCharArray();
 
-    return 0;
+    int i = 0;
+    while(charA.length > i && charB.length > i)
+    {
+      if(!alphabet.isValid(charA[i]) || !alphabet.isValid(charB[i])){
+        throw new IllegalArgumentException();
+      }
+
+      if(alphabet.getPosition(charA[i]) > alphabet.getPosition(charB[i])) return 1;
+      else if(alphabet.getPosition(charA[i]) < alphabet.getPosition(charB[i])) return -1;
+    }
+    return Integer.compare(charA.length, charB.length);
   }
 }

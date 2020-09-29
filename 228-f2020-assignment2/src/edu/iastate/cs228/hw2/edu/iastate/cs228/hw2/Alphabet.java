@@ -10,7 +10,7 @@ import java.util.Scanner;
  * A class representing an ordering of characters that can be queried to know
  * the position of a given character.
  * 
- * @author
+ * @author Jack Croghan
  */
 public class Alphabet
 {
@@ -67,20 +67,15 @@ public class Alphabet
     Scanner scnr2 = new Scanner(file);
 
     i = 0;
-    while(scnr2.hasNext()){
-      lookup[i] = new CharAndPos(scnr2.next().charAt(0), i);
-      //System.out.println(lookup[i]);
+    while(scnr2.hasNextLine()){
+      lookup[i] = new CharAndPos(scnr2.nextLine().charAt(0), i);
+      System.out.println(lookup[i]);
       ++i;
     }
     
     scnr2.close();
 
     lookupSort(lookup, 0, lookup.length - 1);
-
-    //System.out.println("");
-    //for (i = 0; i < lookup.length; ++i) {
-      //System.out.println(lookup[i]);
-    //}
   }
 
 
@@ -131,6 +126,23 @@ public class Alphabet
    */
   private int binarySearch(char toFind)
   {
+    int start = 0;
+    int end = lookup.length - 1;
+    int mid = 0;
+
+    while(start <= end)
+    {
+      mid = (start + end) / 2;
+      if(lookup[mid].character < toFind){
+        start = mid + 1;
+      }
+      else if(lookup[mid].character > toFind){
+        end = mid - 1;
+      }
+      else{
+        return lookup[mid].position;
+      }
+    }
     return -1;
   }
 

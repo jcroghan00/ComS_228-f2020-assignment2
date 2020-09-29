@@ -8,7 +8,7 @@ import java.util.Comparator;
  * An abstract class representing an object that can sort {@link WordList}s
  * and gather statistics on the sorting process.
  * 
- * @author
+ * @author Jack Croghan
  */
 public abstract class Sorter
 {
@@ -40,7 +40,9 @@ public abstract class Sorter
    */
   public Sorter()
   {
-    // TODO
+    totalWordsSorted = 0;
+    totalSortingTime = 0;
+    totalComparisons = 0;
   }
 
 
@@ -83,8 +85,14 @@ public abstract class Sorter
    * @throws IllegalArgumentException
    *   if {@code totalToSort} is negative
    */
-  public void sortWithStatistics(WordList toSort, Comparator<String> comp, int totalToSort) throws NullPointerException, IllegalArgumentException{
-    // TODO
+  public void sortWithStatistics(WordList toSort, Comparator<String> comp, int totalToSort) throws NullPointerException, IllegalArgumentException
+  {
+    totalWordsSorted = 0;
+
+    while(totalWordsSorted < totalToSort)
+    {
+
+    }
   }
 
   /**
@@ -106,10 +114,9 @@ public abstract class Sorter
    *   the total number of words that this sorter has sorted within
    *   {@code sortWithStatistics()}
    */
-  public int getTotalWordsSorted(){
-    // TODO
-
-    return 0;
+  public int getTotalWordsSorted()
+  {
+    return totalWordsSorted;
   }
 
   /**
@@ -121,10 +128,9 @@ public abstract class Sorter
    *   the total amount of time, in milliseconds, that this sorter has used
    *   sorting within {@code sorterWithStatistics()}
    */
-  public long getTotalSortingTime(){
-    // TODO
-
-    return 0;
+  public long getTotalSortingTime()
+  {
+    return totalSortingTime;
   }
 
   /**
@@ -136,10 +142,9 @@ public abstract class Sorter
    *   the total number of comparisons that this sorter has performed while
    *   sorting within {@code sorterWithStatistics()}
    */
-  public long getTotalComparisons(){
-    // TODO
-
-    return 0;
+  public long getTotalComparisons()
+  {
+    return totalSortingTime;
   }
 
 
