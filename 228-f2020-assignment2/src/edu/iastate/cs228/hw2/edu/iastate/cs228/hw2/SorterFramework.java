@@ -50,22 +50,22 @@ SorterFramework
   /**
    * The comparator to use for sorting.
    */
-  private Comparator<String> comparator;
+  private final Comparator<String> comparator;
 
   /**
    * The words to sort.
    */
-  private WordList words;
+  private final WordList words;
 
   /**
    * The array of sorters to use for sorting.
    */
-  private Sorter[] sorters;
+  private final Sorter[] sorters;
 
   /**
    * The total amount of words expected to be sorted by each sorter.
    */
-  private int totalToSort;
+  private final int totalToSort;
 
 
   /**

@@ -15,7 +15,7 @@ public class AlphabetComparator  implements Comparator<String>{
    * The ordering used to compare characters.
    */
 
-  private Alphabet alphabet;
+  private final Alphabet alphabet;
 
 
   /**

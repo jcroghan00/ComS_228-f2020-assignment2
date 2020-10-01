@@ -10,6 +10,7 @@ import java.util.Comparator;
  * 
  * @author Jack Croghan
  */
+@SuppressWarnings({"unchecked", "rawtypes"})
 public abstract class Sorter
 {
   /**
@@ -97,6 +98,7 @@ public abstract class Sorter
       WordList tempList = toSort.clone();
 
       long startTime = java.lang.System.nanoTime();
+      //noinspection unchecked
       sort(tempList, comparator);
       long endTime = java.lang.System.nanoTime();
       double timeMilli = (endTime - startTime) / 1000000.00;
@@ -171,11 +173,12 @@ public abstract class Sorter
    *   the type of objects compared
    */
   /* already completed */
+  @SuppressWarnings("unused")
   private static  class CountingComparator<T> implements Comparator<T>{
     /**
      * The comparator used to perform comparisons.
      */
-    private Comparator<? super T>  wrapped;
+    private final Comparator<? super T>  wrapped;
 
     /**
      * The number of comparisons performed.
@@ -220,6 +223,7 @@ public abstract class Sorter
     /**
      * Resets the comparison counter to zero.
      */
+    @SuppressWarnings("unused")
     public void reset(){
       count = 0;
     }

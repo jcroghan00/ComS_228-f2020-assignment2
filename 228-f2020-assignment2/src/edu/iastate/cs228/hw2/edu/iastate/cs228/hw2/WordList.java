@@ -11,6 +11,7 @@ import java.util.Scanner;
  * 
  * @author Jack Croghan
  */
+@SuppressWarnings("MethodDoesntCallSuperMethod")
 public
 class
 WordList
@@ -19,7 +20,7 @@ WordList
   /**
    * The array holding all of the elements of the list.
    */
-  private
+  private final
   String[]
   words;
 

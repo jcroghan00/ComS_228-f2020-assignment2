@@ -18,7 +18,7 @@ public class Alphabet
    * A lookup table containing characters and their positions.
    * Sorted by the character of each entry.
    */
-  private CharAndPos[] lookup;
+  private final CharAndPos[] lookup;
 
 
   /**
@@ -222,16 +222,17 @@ public class Alphabet
    * Used as the entry type within {@link Alphabet#lookup lookup}.
    */
   /* already completed */
+  @SuppressWarnings("SpellCheckingInspection")
   private static class CharAndPos{
     /**
      * The character of the entry.
      */
-    public char character;
+    public final char character;
 
     /**
      * The position of the entry in the ordering.
      */
-    public int position;
+    public final int position;
 
 
     /**
