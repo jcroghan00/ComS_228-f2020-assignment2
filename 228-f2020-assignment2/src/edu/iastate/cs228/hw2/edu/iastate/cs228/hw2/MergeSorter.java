@@ -20,7 +20,8 @@ public class MergeSorter extends Sorter
 
   private void mergeSortRec(WordList list, Comparator<String> comp, int start, int end)
   {
-    if (start < end) {
+    if (start < end)
+    {
       int mid = (start + end) / 2;
       mergeSortRec(list, comp, start, mid);
       mergeSortRec(list, comp, mid + 1, end);

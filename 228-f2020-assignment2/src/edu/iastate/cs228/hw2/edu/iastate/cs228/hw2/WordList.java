@@ -38,9 +38,7 @@ WordList
     throws NullPointerException
   {
     words = new String[contents.length];
-    for(int i = 0; i < contents.length; ++i){
-      words[i] = contents[i];
-    }
+    System.arraycopy(contents, 0, words, 0, contents.length);
   }
 
   /**
@@ -180,11 +178,8 @@ WordList
   {
     String[] newWords = new String[words.length];
 
-    for(int i = 0; i < words.length; ++i){
-      newWords[i] = words[i];
-    }
+    System.arraycopy(words, 0, newWords, 0, words.length);
 
-    WordList newList = new WordList(newWords);
-    return newList;
+    return new WordList(newWords);
   }
 }

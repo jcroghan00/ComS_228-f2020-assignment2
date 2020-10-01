@@ -32,6 +32,8 @@ public class Alphabet
    */
   public Alphabet(char[] ordering) throws NullPointerException
   {
+    lookup = new CharAndPos[ordering.length];
+
     for (int i = 0; i < ordering.length; ++i){
       lookup[i] = new CharAndPos(ordering[i], i);
     }
@@ -124,7 +126,7 @@ public class Alphabet
   {
     int start = 0;
     int end = lookup.length - 1;
-    int mid = 0;
+    int mid;
 
     while(start <= end)
     {

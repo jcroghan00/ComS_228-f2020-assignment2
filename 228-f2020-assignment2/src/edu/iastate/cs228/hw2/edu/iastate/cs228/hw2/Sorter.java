@@ -99,7 +99,7 @@ public abstract class Sorter
       long startTime = java.lang.System.nanoTime();
       sort(tempList, comparator);
       long endTime = java.lang.System.nanoTime();
-      double timeMilli = (endTime - startTime) / 1000000;
+      double timeMilli = (endTime - startTime) / 1000000.00;
 
       totalSortingTime += timeMilli;
 
@@ -114,7 +114,8 @@ public abstract class Sorter
    * @return
    *   the name of the sorter
    */
-  public String getName(){
+  public String getName()
+  {
     return this.getClass().getSimpleName();
   }
 
