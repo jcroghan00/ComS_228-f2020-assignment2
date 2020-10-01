@@ -1,6 +1,7 @@
 package edu.iastate.cs228.hw2;
 
 
+import java.io.FileNotFoundException;
 import java.util.Comparator;
 
 
@@ -27,18 +28,20 @@ SorterFramework
    *    - the name of a file containing words containing only characters in the
    *      other file
    */
-  public static void main(String[] args)
-  {
-    // TODO check arguments
+  public static void main(String[] args) throws FileNotFoundException {
+    String alphabetList = args[0];
+    String wordList = args[1];
 
     Alphabet alphabet;
     AlphabetComparator comparator;
     WordList words;
-    Sorter[] sorters;
 
-    // TODO create appropriate values
+    alphabet = new Alphabet(alphabetList);
+    words = new WordList(wordList);
+    comparator = new AlphabetComparator(alphabet);
+    Sorter[] sorters = {new InsertionSorter(), new MergeSorter(), new QuickSorter()};
 
-    SorterFramework toRun = null;
+    SorterFramework toRun = new SorterFramework(sorters, comparator, words, 1000000);
     toRun.run();
   }
 
@@ -87,7 +90,10 @@ SorterFramework
     throws NullPointerException,
            IllegalArgumentException
   {
-    // TODO
+    this.sorters = sorters;
+    this.comparator = comparator;
+    this.words = words;
+    this.totalToSort = totalToSort;
   }
 
 
@@ -108,6 +114,20 @@ SorterFramework
   void
   run()
   {
-    // TODO
+    for(int i = 0; i < 3; ++i)
+    {
+      System.out.println("Sorter: " + sorters[i].getName());
+      System.out.println("Word List Length: " + words.length());
+      sorters[i].sortWithStatistics(words, comparator, totalToSort);
+      System.out.println("Words Sorted: " + sorters[i].getTotalWordsSorted());
+      System.out.println("Total Sorting Time: " + sorters[i].getTotalSortingTime() + "ms");
+      int totalRuns = totalToSort / words.length();
+      double averageTime = sorters[i].getTotalSortingTime() / totalRuns;
+      System.out.println("Average Time Per List: " + averageTime + "ms");
+      double compPerSec = sorters[i].getTotalComparisons() / sorters[i].getTotalSortingTime();
+      System.out.println("Comparisons per Millisecond: " + compPerSec);
+      System.out.println("Total Number of Comparisons: " + sorters[i].getTotalComparisons());
+      System.out.println(" ");
+    }
   }
 }

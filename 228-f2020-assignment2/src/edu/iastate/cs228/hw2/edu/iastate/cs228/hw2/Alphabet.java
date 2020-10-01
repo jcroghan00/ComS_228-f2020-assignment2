@@ -69,7 +69,6 @@ public class Alphabet
     i = 0;
     while(scnr2.hasNextLine()){
       lookup[i] = new CharAndPos(scnr2.nextLine().charAt(0), i);
-      System.out.println(lookup[i]);
       ++i;
     }
     
@@ -90,10 +89,7 @@ public class Alphabet
    */
   public boolean isValid(char c)
   {
-    if (binarySearch(c) >= 0){
-      return true;
-    }
-    return false;
+    return binarySearch(c) >= 0;
   }
 
   /**
@@ -182,7 +178,7 @@ public class Alphabet
    */
   private void merge(CharAndPos[] arr, int start, int mid, int end)
   {
-    CharAndPos temp[] = new CharAndPos[end - start + 1];
+    CharAndPos[] temp = new CharAndPos[end - start + 1];
 
     int i = start;
     int j = mid + 1;

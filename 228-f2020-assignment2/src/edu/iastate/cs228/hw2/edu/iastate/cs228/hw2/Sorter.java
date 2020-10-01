@@ -88,11 +88,24 @@ public abstract class Sorter
   public void sortWithStatistics(WordList toSort, Comparator<String> comp, int totalToSort) throws NullPointerException, IllegalArgumentException
   {
     totalWordsSorted = 0;
+    totalSortingTime = 0;
+
+    CountingComparator comparator = new CountingComparator(comp);
 
     while(totalWordsSorted < totalToSort)
     {
+      WordList tempList = toSort.clone();
 
+      long startTime = java.lang.System.nanoTime();
+      sort(tempList, comparator);
+      long endTime = java.lang.System.nanoTime();
+      double timeMilli = (endTime - startTime) / 1000000;
+
+      totalSortingTime += timeMilli;
+
+      totalWordsSorted += toSort.getArray().length;
     }
+    totalComparisons = comparator.getCount();
   }
 
   /**
@@ -128,7 +141,7 @@ public abstract class Sorter
    *   the total amount of time, in milliseconds, that this sorter has used
    *   sorting within {@code sorterWithStatistics()}
    */
-  public long getTotalSortingTime()
+  public double getTotalSortingTime()
   {
     return totalSortingTime;
   }
@@ -144,7 +157,7 @@ public abstract class Sorter
    */
   public long getTotalComparisons()
   {
-    return totalSortingTime;
+    return totalComparisons;
   }
 
 

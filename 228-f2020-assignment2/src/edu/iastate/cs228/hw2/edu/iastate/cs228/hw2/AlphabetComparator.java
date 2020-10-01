@@ -57,19 +57,17 @@ public class AlphabetComparator  implements Comparator<String>{
   @Override
   public int compare(String a, String b) throws NullPointerException, IllegalArgumentException
   {
-    char[] charA = a.toCharArray();
-    char[] charB = b.toCharArray();
-
     int i = 0;
-    while(charA.length > i && charB.length > i)
+    while(a.length() > i && b.length() > i)
     {
-      if(!alphabet.isValid(charA[i]) || !alphabet.isValid(charB[i])){
-        throw new IllegalArgumentException();
+      if(!alphabet.isValid(a.charAt(i)) || !alphabet.isValid(b.charAt(i))){
+        throw new IllegalArgumentException("IllegalCharacter");
       }
 
-      if(alphabet.getPosition(charA[i]) > alphabet.getPosition(charB[i])) return 1;
-      else if(alphabet.getPosition(charA[i]) < alphabet.getPosition(charB[i])) return -1;
+      if(alphabet.getPosition(a.charAt(i)) > alphabet.getPosition(b.charAt(i))) return 1;
+      else if(alphabet.getPosition(a.charAt(i)) < alphabet.getPosition(b.charAt(i))) return -1;
+      ++i;
     }
-    return Integer.compare(charA.length, charB.length);
+    return Integer.compare(a.length(), b.length());
   }
 }
