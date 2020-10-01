@@ -1,6 +1,3 @@
-package edu.iastate.cs228.hw2;
-
-
 import java.io.FileNotFoundException;
 import java.util.Comparator;
 
@@ -121,14 +118,14 @@ SorterFramework
 
       int totalRuns = totalToSort / words.length();
       double averageTime = sorters[i].getTotalSortingTime() / totalRuns;
-      double compPerSec = sorters[i].getTotalComparisons() / sorters[i].getTotalSortingTime();
+      double compPerSec = sorters[i].getTotalComparisons() / (sorters[i].getTotalSortingTime() / 1000.00);
 
       System.out.println("Sorter: " + sorters[i].getName());
       System.out.println("Word List Length: " + words.length());
       System.out.println("Words Sorted: " + sorters[i].getTotalWordsSorted());
-      System.out.println("Total Sorting Time: " + sorters[i].getTotalSortingTime() + "ms");
-      System.out.println("Average Time Per List: " + averageTime + "ms");
-      System.out.println("Comparisons per Millisecond: " + compPerSec);
+      System.out.println("Total Sorting Time: " + sorters[i].getTotalSortingTime() + " ms");
+      System.out.println("Average Time Per List: " + averageTime + " ms");
+      System.out.println("Comparisons per Second: " + compPerSec);
       System.out.println("Total Number of Comparisons: " + sorters[i].getTotalComparisons());
       System.out.println(" ");
     }

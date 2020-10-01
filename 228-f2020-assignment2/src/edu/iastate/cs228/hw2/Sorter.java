@@ -1,6 +1,3 @@
-package edu.iastate.cs228.hw2;
-
-
 import java.util.Comparator;
 
 
